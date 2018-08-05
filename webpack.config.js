@@ -57,7 +57,7 @@ module.exports = {
       actions: path.resolve(__dirname, './src/actions'),
       res: path.resolve(__dirname, './res'),
     },
-    extensions: ['.webpack.js', '.web.js', '.js'],
+    extensions: ['.webpack.js', '.web.js', '.js', '.jsx'],
   },
   plugins: [
     HtmlWebpackPluginConfig,

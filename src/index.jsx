@@ -5,10 +5,10 @@ import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
-import App from './components/app.jsx';
-import Welcome from './components/src/Welcome.jsx';
-import colorsMiddleware from './middleware/colors.js';
-import colorsReducer from './reducers/colors.js';
+import App from './components/app';
+import Welcome from './components/welcome/welcome.controller';
+import colorsMiddleware from './middleware/colors';
+import colorsReducer from './reducers/colors';
 
 const rootMiddleware = [
   colorsMiddleware,
