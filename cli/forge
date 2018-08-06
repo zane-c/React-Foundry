@@ -5,7 +5,7 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function kababToCamelCase(string) {
+function kababToPascalCase(string) {
   let rv = '';
   const pieces = string.split('-');
   pieces.forEach((p) => {
@@ -25,7 +25,7 @@ function create() {
   const helper = require('./helper');
   const pieces = process.argv[3].split('/') || [];
   const kababCaseName = pieces[pieces.length - 1] || process.argv[3];
-  const camelCaseName = kababToCamelCase(kababCaseName);
+  const pascalCaseName = kababToPascalCase(kababCaseName);
   let basePath = process.argv[3];
   let path = basePath;
 
@@ -40,7 +40,7 @@ function create() {
   // Generate controller
   path = `${basePath}/${kababCaseName}.controller.jsx`
   if (!fs.existsSync(path)) {
-    const controllerContent = helper.generateControllerText(camelCaseName, kababCaseName);
+    const controllerContent = helper.generateControllerText(pascalCaseName, kababCaseName);
     fs.appendFileSync(path, controllerContent);
   } else {
     console.log('file already exists here');
@@ -50,7 +50,7 @@ function create() {
   // Generate template
   path = `${basePath}/${kababCaseName}.template.jsx`;
   if (!fs.existsSync(path)) {
-    const templateContent = helper.generateTemplateText(camelCaseName, kababCaseName);
+    const templateContent = helper.generateTemplateText(pascalCaseName, kababCaseName);
     fs.appendFileSync(path, templateContent);
   } else {
     console.log('file already exists');
@@ -60,7 +60,7 @@ function create() {
   // Generate spec file
   path = `${basePath}/${kababCaseName}.spec.jsx`;
   if (!fs.existsSync(path)) {
-    const specContent = helper.generateSpecText(camelCaseName, kababCaseName);
+    const specContent = helper.generateSpecText(pascalCaseName, kababCaseName);
     fs.appendFileSync(path, specContent);
   } else {
     console.log('file already exists');
@@ -70,7 +70,7 @@ function create() {
   // Generate style file
   path = `${basePath}/${kababCaseName}.scss`;
   if (!fs.existsSync(path)) {
-    const styleContent = helper.generateStyleText(camelCaseName, kababCaseName);
+    const styleContent = helper.generateStyleText(pascalCaseName, kababCaseName);
     fs.appendFileSync(path, styleContent);
   } else {
     console.log('file already exists');
