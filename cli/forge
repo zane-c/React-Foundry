@@ -1,0 +1,93 @@
+#! /usr/local/bin/node
+/* eslint-disable */
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function kababToCamelCase(string) {
+  let rv = '';
+  const pieces = string.split('-');
+  pieces.forEach((p) => {
+    rv += capitalize(p);
+  });
+  return rv;
+}
+
+function create() {
+
+  if (!process.argv[3]) {
+    console.log('Please specify a component name');
+    return;
+  }
+
+  const fs = require('fs');
+  const helper = require('./helper');
+  const pieces = process.argv[3].split('/') || [];
+  const kababCaseName = pieces[pieces.length - 1] || process.argv[3];
+  const camelCaseName = kababToCamelCase(kababCaseName);
+  let basePath = process.argv[3];
+  let path = basePath;
+
+  // Make directory
+  if (!fs.existsSync(path)){
+    fs.mkdirSync(path);
+  } else {
+    console.log('directory already exists');
+    return;
+  }
+
+  // Generate controller
+  path = `${basePath}/${kababCaseName}.controller.jsx`
+  if (!fs.existsSync(path)) {
+    const controllerContent = helper.generateControllerText(camelCaseName, kababCaseName);
+    fs.appendFileSync(path, controllerContent);
+  } else {
+    console.log('file already exists here');
+    return;
+  }
+
+  // Generate template
+  path = `${basePath}/${kababCaseName}.template.jsx`;
+  if (!fs.existsSync(path)) {
+    const templateContent = helper.generateTemplateText(camelCaseName, kababCaseName);
+    fs.appendFileSync(path, templateContent);
+  } else {
+    console.log('file already exists');
+    return;
+  }
+
+  // Generate spec file
+  path = `${basePath}/${kababCaseName}.spec.jsx`;
+  if (!fs.existsSync(path)) {
+    const specContent = helper.generateSpecText(camelCaseName, kababCaseName);
+    fs.appendFileSync(path, specContent);
+  } else {
+    console.log('file already exists');
+    return;
+  }
+
+  // Generate style file
+  path = `${basePath}/${kababCaseName}.styles.scss`;
+  if (!fs.existsSync(path)) {
+    const styleContent = helper.generateStyleText(camelCaseName, kababCaseName);
+    fs.appendFileSync(path, styleContent);
+  } else {
+    console.log('file already exists');
+    return;
+  }
+
+  console.log('Done');
+}
+
+const cmd = process.argv[2];
+switch (cmd) {
+  case 'create':
+  case 'c': {
+    create();
+    break;
+  }
+  default: {
+    console.log('No such command...');
+  }
+}

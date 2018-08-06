@@ -1,12 +1,12 @@
 {
-  "name": "react-starter-project",
+  "name": "react-foundry",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Zane Christenson",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git://github.com/zane-c/ReactStarterProject"
+    "url": "git://github.com/zane-c/React-Foundry"
   },
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 9090 --history-api-fallback",
@@ -15,7 +15,8 @@
     "test:watch": "node ./node_modules/karma/bin/karma start",
     "lint": "node ./node_modules/eslint-watch/bin/esw --color --fix -f simple-detail src/**/*.jsx",
     "release": "webpack -p --optimize-minimize",
-    "deploy": "scp dist/* user@example.com:/path/to/folder"
+    "deploy": "scp dist/* user@example.com:/path/to/folder",
+    "forge": "node cli/forge create"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
