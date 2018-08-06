@@ -1,6 +1,6 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
-import styles from './welcome.styles.scss';
+import styles from './welcome.scss';
 
 export default function () {
   return (

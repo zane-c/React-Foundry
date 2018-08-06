@@ -67,7 +67,7 @@ Will generate minified/uglified bundle under the `/dist/` folder
 npm run release
 ```
 
-## Deploy your code your remote server
+## Deploy your code to a remote server
 (Must alter `package.json` with your server information`
 ```
 npm run deploy
@@ -89,8 +89,8 @@ src
   - new-awesome-component
     - new-awesome-component.controller.jsx
     - new-awesome-component.template.jsx
-    - new-awesome-component.styles.scss
     - new-awesome-component.spec.jsx
+    - new-awesome-component.scss
 ```
 
 

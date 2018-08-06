@@ -68,7 +68,7 @@ function create() {
   }
 
   // Generate style file
-  path = `${basePath}/${kababCaseName}.styles.scss`;
+  path = `${basePath}/${kababCaseName}.scss`;
   if (!fs.existsSync(path)) {
     const styleContent = helper.generateStyleText(camelCaseName, kababCaseName);
     fs.appendFileSync(path, styleContent);

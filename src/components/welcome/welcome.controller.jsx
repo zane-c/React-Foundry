@@ -17,6 +17,10 @@ export class Welcome extends React.Component {
     }, 3000);
   }
 
+  componentDidMount() {
+    document.title = 'React Foundry';
+  }
+
   componentWillUnmount() {
     clearInterval(this.colorGenerator);
   }

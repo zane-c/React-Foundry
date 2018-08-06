@@ -48,7 +48,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(${camelCaseName});
 
   generateTemplateText: function (camelCaseName, kababCaseName) {
     return `import React from 'react';
-import styles from './${kababCaseName}.styles.scss';
+import styles from './${kababCaseName}.scss';
 
 export default function () {
   return (
