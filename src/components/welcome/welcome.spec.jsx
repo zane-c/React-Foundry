@@ -19,6 +19,6 @@ describe('[Welcome]', () => {
 	});
 
 	it('should return the correct message', () => {
-		expect(ctrl.getMessage()).toEqual('React Starter Template');
+		expect(ctrl.getMessage()).toEqual('React Foundry');
 	});
 });

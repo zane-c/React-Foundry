@@ -1,23 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import pt from 'prop-types';
 import { connect } from 'react-redux';
-import * as api from '../../actions/colors.js';
+import { putInStore } from '../../actions/index';
 import template from './welcome.template';
 
 export class Welcome extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      message: 'React Starter Template',
-    };
+    this.state = {};
   }
 
-  componentDidMount() {
-    this.props.generateColor();
+  componentWillMount() {
+    this.generateNewColor();
+    this.colorGenerator = setInterval(this.generateNewColor, 3000);
   }
 
-  getMessage = () => {
-    return this.state.message;
+  componentWillUnmount() {
+    clearInterval(this.colorGenerator);
+  }
+
+  generateNewColor = () => {
+    const randomNumber = Math.floor(Math.random() * 0xFFFFFF);
+    let hexStr = randomNumber.toString(16);
+    while (hexStr.length < 6) {
+      hexStr = `0${hexStr}`;
+    }
+    this.props.put('color', `#${hexStr}`);
   }
 
   render() {
@@ -26,18 +34,15 @@ export class Welcome extends React.Component {
 }
 
 Welcome.propTypes = {
-  color: PropTypes.string,
-  generateColor: PropTypes.func,
+  color: pt.string,
 };
 
 const mapStateToProps = state => ({
-  color: state.colors.color,
+  color: state.store.color,
 });
 
 const mapDispatchToProps = dispatch => ({
-  generateColor: () => {
-    dispatch(api.generateColor());
-  },
+  put: (key, value) => dispatch(putInStore(key, value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Welcome);

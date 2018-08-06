@@ -22,7 +22,8 @@
     "react/require-default-props": "off",
     "react/no-unused-prop-types": "off",
     "padded-blocks": "off",
-    "import/no-named-as-default": "off"
+    "import/no-named-as-default": "off",
+    "react/jsx-closing-bracket-location": "off"
   },
   "env": {
     "browser": true

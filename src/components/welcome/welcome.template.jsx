@@ -13,7 +13,15 @@ export default function () {
           height="100"
         />
       </div>
-      <div className={styles.message}>{this.getMessage()}</div>
+      <div className={styles.message}>React Foundry</div>
+      <br />
+      <a
+        className="btn btn-danger"
+        href="https://github.com/zane-c/React-Foundry/blob/develop/README.md"
+        rel="noopener noreferrer"
+        target="_blank">
+        View Docs
+      </a>
     </div>
   );
 }

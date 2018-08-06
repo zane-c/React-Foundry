@@ -5,18 +5,19 @@ import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './components/app';
 import Welcome from './components/welcome/welcome.controller';
-import colorsMiddleware from './middleware/colors';
-import colorsReducer from './reducers/colors';
+import indexMiddleware from './middleware/index';
+import indexReducer from './reducers/index';
 
 const rootMiddleware = [
-  colorsMiddleware,
+  indexMiddleware,
 ];
 
 const rootReducer = combineReducers({
-  colors: colorsReducer,
   routing: routerReducer,
+  store: indexReducer,
 });
 
 const store = createStore(

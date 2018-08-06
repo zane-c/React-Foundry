@@ -1,15 +1,13 @@
-import * as actions from '../actions/colors.js';
+import * as actions from '../actions/index';
 
-const defaults = {
-  color: '#0000FF',
-};
+const defaults = {};
 
 const reducer = (state = defaults, action) => {
   switch (action.type) {
-    case actions.GENERATE_COLOR: {
+    case actions.PUT_IN_STORE: {
       return {
         ...state,
-        color: action.color,
+        [action.key]: action.value,
       };
     }
     default: {
