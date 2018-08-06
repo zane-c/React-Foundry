@@ -1,22 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Route, Router, IndexRoute, hashHistory } from 'react-router';
+import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
-import App from './components/app.jsx';
-import Welcome from './components/src/Welcome.jsx';
-import colorsMiddleware from './middleware/colors.js';
-import colorsReducer from './reducers/colors.js';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import App from './components/app';
+import Welcome from './components/welcome/welcome.controller';
+import indexMiddleware from './middleware/index';
+import indexReducer from './reducers/index';
 
 const rootMiddleware = [
-  colorsMiddleware,
+  indexMiddleware,
 ];
 
 const rootReducer = combineReducers({
-  colors: colorsReducer,
   routing: routerReducer,
+  store: indexReducer,
 });
 
 const store = createStore(
@@ -26,7 +27,7 @@ const store = createStore(
   ),
 );
 
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
