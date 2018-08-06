@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as api from '../../actions/colors.js';
 import template from './welcome.template';
 
-class Welcome extends React.Component {
+export class Welcome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

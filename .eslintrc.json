@@ -20,7 +20,8 @@
     "arrow-body-style": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
-    "react/no-unused-prop-types": "off"
+    "react/no-unused-prop-types": "off",
+    "padded-blocks": "off"
   },
   "env": {
     "browser": true
