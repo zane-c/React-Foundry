@@ -21,7 +21,8 @@
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "react/no-unused-prop-types": "off",
-    "padded-blocks": "off"
+    "padded-blocks": "off",
+    "import/no-named-as-default": "off"
   },
   "env": {
     "browser": true

@@ -13,8 +13,7 @@
     "public": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0 --port 9090 --history-api-fallback",
     "test": "node ./node_modules/karma/bin/karma start --single-run",
     "test:watch": "node ./node_modules/karma/bin/karma start",
-    "lint": "exit 0",
-    "lint:watch": "exit 0",
+    "lint": "node ./node_modules/eslint-watch/bin/esw --color --fix -f simple-detail src/**/*.jsx",
     "release": "webpack -p --optimize-minimize",
     "deploy": "scp dist/* user@example.com:/path/to/folder"
   },
@@ -35,6 +34,7 @@
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.1.0",
+    "eslint-watch": "^4.0.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.29.0",
