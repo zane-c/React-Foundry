@@ -1,6 +1,6 @@
-<div style="display: flex; justify-content: center;">
-  <img src="favicon.png">
-</div>
+<p align="center">
+  <img src="favicon.png" width="200px" alt="" />
+</p>
 
 # React Foundry
 
