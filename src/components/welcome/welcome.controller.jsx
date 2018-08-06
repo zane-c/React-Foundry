@@ -11,21 +11,23 @@ export class Welcome extends React.Component {
   }
 
   componentWillMount() {
-    this.generateNewColor();
-    this.colorGenerator = setInterval(this.generateNewColor, 3000);
+    this.generateColor();
+    this.colorGenerator = setInterval(() => {
+      this.props.put('welcome/color', this.generateColor());
+    }, 3000);
   }
 
   componentWillUnmount() {
     clearInterval(this.colorGenerator);
   }
 
-  generateNewColor = () => {
+  generateColor = () => {
     const randomNumber = Math.floor(Math.random() * 0xFFFFFF);
     let hexStr = randomNumber.toString(16);
     while (hexStr.length < 6) {
       hexStr = `0${hexStr}`;
     }
-    this.props.put('color', `#${hexStr}`);
+    return `#${hexStr}`;
   }
 
   render() {
@@ -38,7 +40,7 @@ Welcome.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  color: state.store.color,
+  color: state.store['welcome/color'],
 });
 
 const mapDispatchToProps = dispatch => ({

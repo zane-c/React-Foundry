@@ -9,16 +9,24 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('[Welcome]', () => {
   let ctrl;
+  let props = { put: () => null };
 
   beforeEach(() => {
-    ctrl = shallow(<Welcome generateColor={() => null} />).instance();
+    ctrl = shallow(<Welcome put={props.put} />).instance();
   });
 
   it('should have the component controller defined', () => {
     expect(ctrl).toBeDefined();
 	});
 
-	it('should return the correct message', () => {
-		expect(ctrl.getMessage()).toEqual('React Foundry');
-	});
+  describe('[generateNewColor]', () => {
+    
+    it('should return a 7 digit string', () => {
+      expect(ctrl.generateColor().length).toEqual(7);
+    });
+    
+    it('should return a properly formatted hash color', () => {
+      expect(ctrl.generateColor()[0]).toEqual('#');
+    });
+  });
 });
