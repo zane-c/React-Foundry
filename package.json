@@ -9,11 +9,11 @@
     "url": "git://github.com/zane-c/React-Foundry"
   },
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --open --port 9090 --history-api-fallback",
-    "public": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --open --host 0.0.0.0 --port 9090 --history-api-fallback",
-    "test": "node ./node_modules/karma/bin/karma start --single-run",
-    "test:watch": "node ./node_modules/karma/bin/karma start",
-    "lint": "node ./node_modules/eslint-watch/bin/esw --color --fix -f simple-detail src/**/*.jsx",
+    "start": "webpack-dev-server --open --port 9090 --history-api-fallback",
+    "public": "webpack-dev-server --open --host 0.0.0.0 --port 9090 --history-api-fallback",
+    "test": "karma start --single-run",
+    "test:watch": "karma start",
+    "lint": "esw --color --fix -f simple-detail src/**/*.jsx",
     "release": "webpack -p --optimize-minimize",
     "deploy": "scp dist/* user@example.com:/path/to/folder",
     "forge": "node cli/forge create"
